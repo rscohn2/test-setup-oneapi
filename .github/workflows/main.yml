@@ -10,7 +10,7 @@ jobs:
       with:
         list: true
         components: |
-          tbb
+          icx
           vpl
     - name: Test install
       run: |
