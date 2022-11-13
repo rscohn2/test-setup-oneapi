@@ -1,15 +1,17 @@
 on: [push]
 
 jobs:
-  hello_world_job:
+  install:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: Install oneapi tools
     steps:
-      - name: Hello world action step
-        id: hello
-        uses: rscohn2/setup-oneapi@v1.1
-        with:
-          who-to-greet: 'Mona the Octocat'
-      # Use the output from the `hello` step
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+    - uses: actions/checkout@v3
+    - uses: rscohn2/setup-oneapi@v0
+      with:
+        list: true
+        components: |
+          tbb
+          vpl
+    - name: Test install
+      run: |
+        source /opt/intel/oneapi/setvars.sh
