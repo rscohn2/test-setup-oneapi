@@ -15,3 +15,6 @@ jobs:
     - name: Test install
       run: |
         source /opt/intel/oneapi/setvars.sh
+        icpx test.cpp
+        ./a.out
+        
